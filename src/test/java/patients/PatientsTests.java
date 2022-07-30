@@ -6,8 +6,7 @@ import pages.patientpages.*;
 
 import java.util.List;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.*;
 
 public class PatientsTests extends BaseTests {
     private String id ="1907544588400";
@@ -73,7 +72,13 @@ public class PatientsTests extends BaseTests {
         patientList.clickOnName("Abdallah Amr mohamed");
        ProcedurePage procedurePage= patientList.clickOnProcedurePage();
       AddProcedurePage addProcedurePage = procedurePage.clickAddButton();
-        addProcedurePage.setProcedureName();
-
+        addProcedurePage.setProcedureName("'D40 - Abfraction'");
+    System.out.println(addProcedurePage.getProcedureName());
+    addProcedurePage.setProviderName("'farid taha '");
+    System.out.println(addProcedurePage.getProviderName());
+    assertFalse(addProcedurePage.checkIfLabCostIsClickable(),"LabCost is clickable");
+        addProcedurePage.setProcedureStatus("'Completed'");
+        System.out.println(addProcedurePage.getProcedureStatus());
+        addProcedurePage.setFees("80");
     }
 }
